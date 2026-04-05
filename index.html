@@ -47,8 +47,8 @@
       <p class="hero-eyebrow">ADVANCED METAMATERIALS · PRE-LAUNCH</p>
       <h1 class="hero-headline">
         <span class="line1">PROTECTION</span>
-        <span class="line2">ENGINEERED.</span>
-        <span class="line3">FROM THE INSIDE OUT.</span>
+        <span class="line2">ENGINEERED</span>
+        <span class="line3">FROM THE INSIDE OUT</span>
       </h1>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">PARTNER WITH US</a>
@@ -96,7 +96,7 @@
         <div class="tech-visual">
           <div class="tech-diagram-wrap">
             <svg id="techLattice3D" viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg"></svg>
-            <div class="diagram-caption">VERSÁMESH LATTICE — ISOMETRIC VIEW</div>
+            <div class="diagram-caption">FORTIFYD LATTICE — ISOMETRIC VIEW</div>
           </div>
         </div>
       </div>
@@ -271,17 +271,20 @@
       </div>
       <div class="contact-form-wrap">
         <p class="contact-desc">Ready to explore a partnership or pilot? Tell us about your organization and what you're working on.</p>
-        <div class="contact-field">
-          <input type="email" id="contactEmail" placeholder="your@company.com" autocomplete="off" />
-        </div>
-        <div class="contact-field">
-          <input type="text" id="contactOrg" placeholder="Organization / Company" autocomplete="off" />
-        </div>
-        <div class="contact-field">
-          <textarea id="contactMsg" placeholder="Describe your project or area of interest..." rows="4"></textarea>
-        </div>
-        <button class="btn btn-primary btn-full" id="contactSubmit">GET IN TOUCH</button>
-        <div class="contact-confirm" id="contactConfirm">Message received — we'll be in touch shortly.</div>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="52d265b3-9c09-4c89-bf72-3f4e31eb3f98">
+          <div class="contact-field">
+            <input type="email" id="contactEmail" name="email" placeholder="your@company.com" autocomplete="off" required>
+          </div>
+          <div class="contact-field">
+            <input type="text" id="contactOrg" name="name" placeholder="Organization / Company" autocomplete="off" required>
+          </div>
+          <div class="contact-field">
+            <textarea id="contactMsg" name="message" placeholder="Describe your project or area of interest..." rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="contactSubmit">GET IN TOUCH</button>
+          <div class="contact-confirm" id="contactConfirm">Message received — we'll be in touch shortly.</div>
+        </form>
       </div>
     </div>
   </section>

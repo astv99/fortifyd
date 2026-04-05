@@ -13,9 +13,9 @@
   --accent:    #e84519;
   --accent-2:  #ff6b35;
   --accent-dim: rgba(232,69,25,0.15);
-  --text:      #f0ede8;
-  --text-dim:  #8a8580;
-  --text-muted:#4a4845;
+  --text:      #ffffff;
+  --text-dim:  #cfc7c0;
+  --text-muted:#94908a;
   --border:    rgba(240,237,232,0.08);
   --border-accent: rgba(232,69,25,0.3);
   --mono:      'DM Mono', monospace;
@@ -90,7 +90,7 @@ input, textarea, button { font-family: inherit; }
 }
 .logo-sub {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
   margin-top: 2px;
@@ -113,7 +113,7 @@ input, textarea, button { font-family: inherit; }
 }
 .nav-links a {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   color: var(--text-dim);
   transition: color 0.2s;
@@ -202,7 +202,7 @@ input, textarea, button { font-family: inherit; }
 }
 .hero-eyebrow {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.16em;
   color: var(--accent);
   margin-bottom: 24px;
@@ -240,7 +240,7 @@ input, textarea, button { font-family: inherit; }
 .hero-lattice-visual svg { width: 100%; height: auto; }
 .lattice-label {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   color: var(--text-muted);
   text-align: center;
@@ -255,7 +255,7 @@ input, textarea, button { font-family: inherit; }
   align-items: center;
   justify-content: center;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.14em;
   padding: 14px 28px;
   border: 1.5px solid transparent;
@@ -299,7 +299,7 @@ input, textarea, button { font-family: inherit; }
 .ticker-track {
   display: inline-flex;
   gap: 0;
-  animation: ticker 28s linear infinite;
+  animation: ticker 40s linear infinite;
 }
 .ticker-item {
   display: inline-flex;
@@ -307,7 +307,7 @@ input, textarea, button { font-family: inherit; }
   gap: 12px;
   padding: 0 40px;
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   letter-spacing: 0.14em;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -350,7 +350,7 @@ input, textarea, button { font-family: inherit; }
 }
 .stat-label {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
   color: var(--text-dim);
   max-width: 360px;
@@ -371,7 +371,7 @@ section {
 }
 .section-label {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.85rem;
   letter-spacing: 0.2em;
   color: var(--accent);
   margin-bottom: 12px;
@@ -409,7 +409,7 @@ section {
 }
 .tech-text p {
   color: var(--text-dim);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 20px;
   max-width: 480px;
 }
@@ -429,7 +429,7 @@ section {
 }
 .cred {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   letter-spacing: 0.1em;
   color: var(--text-dim);
   display: flex;
@@ -454,7 +454,7 @@ section {
 .tech-diagram-wrap svg { width: 100%; height: auto; }
 .diagram-caption {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
   color: var(--text-muted);
   text-align: center;
@@ -496,14 +496,14 @@ section {
 .feature-icon svg { width: 100%; height: 100%; }
 .feature-card h3 {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
   margin-bottom: 12px;
 }
 .feature-card p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -515,7 +515,7 @@ section {
 .industries-sub { margin-bottom: 8px; }
 .industries-desc {
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
   color: var(--text-dim);
   margin-bottom: 56px;
@@ -563,7 +563,7 @@ section {
   margin-bottom: 12px;
 }
 .industry-card-body p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.65;
 }
@@ -593,14 +593,14 @@ section {
   margin-top: 40px;
 }
 .partners-text p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-dim);
   margin-bottom: 32px;
   max-width: 480px;
 }
 .looking-for-title {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   letter-spacing: 0.16em;
   color: var(--text-dim);
   margin-bottom: 16px;
@@ -611,7 +611,7 @@ section {
   gap: 12px;
 }
 .looking-for-list li {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--text-dim);
   padding-left: 20px;
   position: relative;
@@ -645,7 +645,7 @@ section {
   margin-bottom: 0 !important;
 }
 .contact-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-dim);
   margin-bottom: 28px;
 }
@@ -717,7 +717,7 @@ footer {
 }
 .footer-links a {
   font-family: var(--mono);
-  font-size: 0.62rem;
+  font-size: 0.85rem;
   letter-spacing: 0.12em;
   color: var(--text-muted);
   text-transform: uppercase;

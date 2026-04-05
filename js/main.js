@@ -112,6 +112,53 @@
     const msgInput = document.getElementById('contactMsg');
     if (!btn) return;
 
+    const form = document.getElementById('contactForm');
+    const submitBtn = form.querySelector('#contactSubmit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const formObject = Object.fromEntries(formData);
+      formObject.access_key = "52d265b3-9c09-4c89-bf72-3f4e31eb3f98";
+      //formData.append("access_key", "52d265b3-9c09-4c89-bf72-3f4e31eb3f98");
+      const formJson = JSON.stringify(formObject);
+
+      const originalText = submitBtn.textContent;
+
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: formJson
+          //method: "POST",
+          //body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("Success! Your message has been sent.");
+          form.reset();
+        } else {
+          alert("Error: " + result.message);
+        }
+
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    /*
     btn.addEventListener('click', () => {
       const email = emailInput ? emailInput.value.trim() : '';
       if (!email || !email.includes('@')) {
@@ -132,6 +179,7 @@
         if (msgInput) msgInput.value = '';
       }, 900);
     });
+    */
   }
 
   /* ============================================================
