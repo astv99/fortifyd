@@ -10,7 +10,7 @@
   --bg-2:      #111111;
   --bg-3:      #161616;
   --bg-card:   #131313;
-  --accent:    #e84519;
+  --accent:    #D13D15; /* saved: e84519 A23010 */
   --accent-2:  #ff6b35;
   --accent-dim: rgba(232,69,25,0.15);
   --text:      #ffffff;
@@ -40,11 +40,6 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 img, svg { display: block; }
 input, textarea, button { font-family: inherit; }
-
-/* ---- SCROLLBAR ---- */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
 /* ---- SELECTION ---- */
 ::selection { background: var(--accent); color: #fff; }
@@ -353,7 +348,6 @@ input, textarea, button { font-family: inherit; }
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   color: var(--text-dim);
-  max-width: 360px;
   line-height: 1.5;
 }
 
