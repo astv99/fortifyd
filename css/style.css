@@ -523,6 +523,7 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  margin-bottom:
 }
 .industry-card {
   background: var(--bg-card);
@@ -556,13 +557,12 @@ section {
 }
 .industry-tags {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.9em;
   letter-spacing: 0.12em;
   color: var(--accent);
   margin-bottom: 12px;
 }
 .industry-card-body p {
-  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.65;
 }

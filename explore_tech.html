@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortifyd – Rapid + TCT 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+      --bg: #ffffff;
+      --surface: #f2f2f2;
+      --border: #d0d0d0;
+      --orange: #D13D15; /* D13D15 E84C1E */
+      --text: #111111;
+      --muted: #333333;
+      --sub: #444444;
+  }
+
+  @page { size: letter; margin: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+
+    margin: 0 auto;
+    font-size:1.25em;
+    line-height: 1.4;
+  }
+
+  /* HEADER */
+  header { display: grid; grid-template-columns: 250px 1fr; border-bottom: 2px solid var(--border); }
+
+  .header-left {
+    background: var(--orange);
+    padding: 18px 18px 14px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size:2.583em; color: #fff; line-height: 1; }
+  .logo-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size:0.792em; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: 3px; }
+  .badge-row { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; }
+  .badge { font-family: 'IBM Plex Mono', monospace; font-size:0.708em; letter-spacing: 0.5px; color: #fff; border: 1px solid rgba(255,255,255,0.5); padding: 3px 6px; border-radius: 2px; display: inline-block; background: rgba(0,0,0,0.15); }
+
+  .header-right { padding: 18px 22px 14px; display: flex; flex-direction: column; justify-content: space-between; background: #f7f7f7; border-left: 1px solid var(--border); }
+  .conf-label { font-family: 'IBM Plex Mono', monospace; font-size:0.708em; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+  .headline { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size:2.083em; line-height: 1.0; color: var(--text); text-transform: uppercase; }
+  .headline span { color: var(--orange); }
+  .tech-line { font-size:0.917em; color: var(--muted); line-height: 1.5; margin-top: 8px; border-left: 2px solid var(--orange); padding-left: 10px; max-width: 480px; }
+
+  /* METRICS */
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--border); }
+  .metric { padding: 11px 16px; border-right: 1px solid var(--border); }
+  .metric:last-child { border-right: none; }
+  .metric-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size:2.417em; color: var(--orange); line-height: 1; }
+  .metric-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size:0.958em; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text); margin-top: 1px; }
+  .metric-desc { font-size:0.833em; color: var(--sub); margin-top: 2px; line-height: 1.35; }
+
+  /* BODY */
+  .body-grid { display: grid; grid-template-columns: 1fr 1px 1fr; }
+  .divider-v { background: var(--border); width: 1px; }
+  .col { padding: 13px 17px; }
+
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size:0.667em; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* CHARTS */
+  .chart-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px 8px; margin-bottom: 10px; }
+  .chart-title { font-family: 'IBM Plex Mono', monospace; font-size:0.708em; color: var(--sub); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* COMPETITOR TABLE */
+  .comp-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+  .comp-table { width: 100%; border-collapse: collapse; font-size:0.833em; }
+  .comp-table thead tr { background: #1a1a1a; }
+  .comp-table thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size:0.833em; text-transform: uppercase; letter-spacing: 0.3px; padding: 5px 6px; text-align: center; color: #fff; border-right: 1px solid #333; white-space: nowrap; }
+  .comp-table thead th:first-child { text-align: left; min-width: 70px; }
+  .comp-table thead th.fortifyd-col { background: var(--orange); border-right: none; }
+  .comp-table tbody tr { border-bottom: 1px solid var(--border); }
+  .comp-table tbody tr:nth-child(even) { background: #fafafa; }
+  .comp-table tbody td { padding: 5px 6px; text-align: center; border-right: 1px solid var(--border); vertical-align: middle; }
+  .comp-table tbody td:first-child { text-align: left; font-weight: 600; color: var(--muted); font-size:0.833em; }
+  .comp-table tbody td.fortifyd-col { background: #fff8f5; border-right: none; font-weight: 700; color: var(--orange); font-family: 'Barlow Condensed', sans-serif; font-size:0.917em; text-transform: uppercase; }
+  .chk { color: #1a8c35; font-size:1em; }
+  .xmk { color: #cc2200; font-size:1em; }
+  .prt { color: #b07000; font-size:0.917em; font-style: italic; }
+
+  /* ADVANTAGES */
+  .adv-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
+  .adv-item { display: grid; grid-template-columns: 16px 1fr; gap: 8px; align-items: start; }
+  .adv-icon { width: 14px; height: 14px; background: var(--orange); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-top: 1px; flex-shrink: 0; }
+  .adv-icon svg { width: 8px; height: 8px; }
+  .adv-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size:0.958em; color: var(--text); text-transform: uppercase; letter-spacing: 0.2px; }
+  .adv-body { font-size:0.833em; color: var(--sub); margin-top: 1px; line-height: 1.4; }
+
+  /* LATTICE */
+  .lattice-visual { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-around; gap: 6px; }
+  .lattice-item { text-align: center; flex: 1; }
+  .lattice-label { font-family: 'IBM Plex Mono', monospace; font-size:0.708em; color: var(--sub); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; }
+  .lattice-vs { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size:1.083em; color: #aaa; }
+
+  /* APPLICATIONS */
+  .apps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+  .app-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 7px 9px; }
+  .app-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size:0.917em; text-transform: uppercase; letter-spacing: 0.3px; color: var(--orange); }
+  .app-detail { font-size:0.792em; color: var(--sub); margin-top: 2px; line-height: 1.35; }
+
+  /* FOOTER */
+  footer { background: var(--orange); display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 10px 18px; align-items: center; }
+  .footer-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size:0.958em; text-transform: uppercase; color: #fff; line-height: 1.2; white-space: nowrap; }
+  .footer-cta span { display: block; font-family: 'Barlow', sans-serif; font-weight: 300; font-size:0.833em; text-transform: none; color: rgba(255,255,255,0.9); margin-top: 2px; white-space: normal; }
+  .footer-contact { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size:0.75em; color: #fff; line-height: 1.8; padding-left: 60px; white-space: nowrap; }
+  .footer-web { text-align: right; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size:1.25em; color: #fff; }
+  .footer-web span { display: block; font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size:0.708em; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px; }
+  .footer-email { color: rgba(255,255,255,1); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px; }
+  .footer-home-link { color: rgba(255,255,255,1); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div>
+      <div class="logo">FORTIFYD&trade;</div>
+      <div class="logo-sub">Next-Gen Impact Protection</div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">⬡ Patent Pending</span>
+      <span class="badge">⬡ Backed by CU Research</span>
+      <span class="badge">⬡ Supported by CU Venture Partners</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div>
+      <div class="conf-label">Rapid + TCT 2026 · Additive Manufacturing</div>
+      <div class="headline">Protection <span>Engineered</span><br>From the Inside Out</div>
+    </div>
+    <p class="tech-line">
+      Fortifyd's patent-pending software platform computationally generates custom plate lattice structures — printed via additive manufacturing — that dissipate energy across the full impact spectrum, replacing static foam with geometry tunable per sport, zone, and impact profile.
+    </p>
+  </div>
+</header>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-num">10×</div>
+    <div class="metric-label">Energy Absorption</div>
+    <div class="metric-desc">vs. EPS foam at equivalent densities, in simulation</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">1000+</div>
+    <div class="metric-label">Multi-Impact Cycles</div>
+    <div class="metric-desc">Retains dissipation performance across repeated loading vs. single-use foam</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">3-axis</div>
+    <div class="metric-label">Tunable by Design</div>
+    <div class="metric-desc">Stiffness, porosity &amp; energy absorption zones controlled at design time</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body-grid">
+
+  <!-- LEFT COLUMN -->
+  <div class="col">
+    <div class="section-label">Performance Data</div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Energy Absorption — Plate Lattice vs. Alternatives (Equivalent Density ρ* = 0.11)</div>
+      <svg viewBox="0 0 340 130" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <line x1="52" y1="10" x2="52" y2="105" stroke="#bbb" stroke-width="0.8"/>
+        <line x1="52" y1="105" x2="330" y2="105" stroke="#bbb" stroke-width="0.8"/>
+        <text x="48" y="108" text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0</text>
+        <text x="48" y="85"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">2</text>
+        <text x="48" y="62"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">4</text>
+        <text x="48" y="39"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">6</text>
+        <text x="48" y="16"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">8</text>
+        <text x="5" y="60" font-size="6" fill="#444" transform="rotate(-90,5,60)" text-anchor="middle" font-family="'IBM Plex Mono',monospace">kJ/kg absorbed</text>
+        <line x1="52" y1="83" x2="330" y2="83" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="52" y1="60" x2="330" y2="60" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="52" y1="37" x2="330" y2="37" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="52" y1="14" x2="330" y2="14" stroke="#e0e0e0" stroke-width="0.5"/>
+        <rect x="75"  y="90" width="32" height="15" fill="#aaa" rx="1"/>
+        <text x="91"  y="88" text-anchor="middle" font-size="6.5" fill="#333" font-family="'IBM Plex Mono',monospace">0.8</text>
+        <text x="91"  y="118" text-anchor="middle" font-size="7" fill="#333" font-family="'Barlow',sans-serif">EPS Foam</text>
+        <rect x="130" y="14" width="32" height="91" fill="url(#barGrad)" rx="1"/>
+        <text x="146" y="12" text-anchor="middle" font-size="6.5" fill="#E84C1E" font-weight="bold" font-family="'IBM Plex Mono',monospace">8.0</text>
+        <text x="146" y="118" text-anchor="middle" font-size="7" fill="#E84C1E" font-family="'Barlow',sans-serif">Plate Lattice</text>
+        <rect x="200" y="72" width="32" height="33" fill="#bbb" rx="1"/>
+        <text x="216" y="70" text-anchor="middle" font-size="6.5" fill="#333" font-family="'IBM Plex Mono',monospace">1.8</text>
+        <text x="216" y="118" text-anchor="middle" font-size="7" fill="#333" font-family="'Barlow',sans-serif">D3O</text>
+        <rect x="255" y="60" width="32" height="45" fill="#c0c0c0" rx="1"/>
+        <text x="271" y="58" text-anchor="middle" font-size="6.5" fill="#333" font-family="'IBM Plex Mono',monospace">2.4</text>
+        <text x="271" y="118" text-anchor="middle" font-size="7" fill="#333" font-family="'Barlow',sans-serif">MIPS</text>
+        <defs>
+          <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff6a3d"/><stop offset="100%" stop-color="#E84C1E"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Multi-Impact Durability — Compressive Stress vs. Strain (Cyclic Loading)</div>
+      <svg viewBox="0 0 340 120" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <line x1="42" y1="8"  x2="42"  y2="98" stroke="#bbb" stroke-width="0.8"/>
+        <line x1="42" y1="98" x2="330" y2="98" stroke="#bbb" stroke-width="0.8"/>
+        <text x="38" y="101" text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0</text>
+        <text x="38" y="75"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.05</text>
+        <text x="38" y="48"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.10</text>
+        <text x="38" y="22"  text-anchor="end" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.15</text>
+        <text x="5" y="55" font-size="6" fill="#444" transform="rotate(-90,5,55)" text-anchor="middle" font-family="'IBM Plex Mono',monospace">Stress [MPa]</text>
+        <text x="42"  y="110" text-anchor="middle" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0</text>
+        <text x="130" y="110" text-anchor="middle" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.2</text>
+        <text x="215" y="110" text-anchor="middle" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.4</text>
+        <text x="300" y="110" text-anchor="middle" font-size="7" fill="#333" font-family="'IBM Plex Mono',monospace">0.6</text>
+        <text x="186" y="119" text-anchor="middle" font-size="6.5" fill="#444" font-family="'IBM Plex Mono',monospace">Strain</text>
+        <line x1="42" y1="74" x2="330" y2="74" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="42" y1="47" x2="330" y2="47" stroke="#e0e0e0" stroke-width="0.5"/>
+        <line x1="42" y1="21" x2="330" y2="21" stroke="#e0e0e0" stroke-width="0.5"/>
+        <path d="M42,98 C70,90 90,80 110,60 C130,40 140,20 160,12 C175,8 185,10 195,14 C215,22 230,55 240,62 C255,72 270,75 285,74 C300,74 315,74 330,90" fill="none" stroke="#ff6a3d" stroke-width="1.5"/>
+        <text x="165" y="10" font-size="6" fill="#E84C1E" font-family="'IBM Plex Mono',monospace">Cycle 1</text>
+        <path d="M42,98 C65,93 85,86 105,70 C125,52 138,30 155,22 C170,16 183,18 193,22 C212,30 228,62 238,68 C252,76 267,78 282,77 C297,77 312,77 330,91" fill="none" stroke="#E84C1E" stroke-width="1.2" opacity="0.75"/>
+        <text x="224" y="60" font-size="6" fill="#E84C1E" font-family="'IBM Plex Mono',monospace">Cycle 10</text>
+        <path d="M42,98 C62,95 82,90 100,78 C118,64 133,42 150,34 C165,27 180,30 190,34 C208,42 224,68 234,73 C248,80 263,82 278,81 C293,81 308,80 330,92" fill="none" stroke="#E84C1E" stroke-width="1" opacity="0.5"/>
+        <path d="M42,98 C60,96 78,93 96,84 C113,74 128,55 145,47 C160,40 176,43 187,47 C205,55 221,74 231,78 C245,84 260,85 275,84 C290,84 305,83 330,93" fill="none" stroke="#E84C1E" stroke-width="0.8" opacity="0.3"/>
+        <text x="240" y="79" font-size="6" fill="#555" font-family="'IBM Plex Mono',monospace">Cycle 1000</text>
+        <rect x="45" y="13" width="84" height="16" fill="#fff" stroke="#ccc" stroke-width="0.5" rx="2"/>
+        <text x="50" y="23" font-size="6" fill="#333" font-family="'IBM Plex Mono',monospace">Plate Lattice maintains</text>
+        <text x="50" y="28" font-size="6" fill="#333" font-family="'IBM Plex Mono',monospace">shape across 1000+ cycles</text>
+      </svg>
+    </div>
+
+    <div class="section-label">Technology Advantages</div>
+    <div class="adv-list">
+      <div class="adv-item">
+        <div class="adv-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="adv-title">Turns Protection Into Software</div>
+          <div class="adv-body">Impact performance computed at design time — not molded. Geometry outputs directly to additive manufacturing build files (SLS, FDM, MJF, TPU-compatible).</div>
+        </div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="adv-title">Region-Specific Gradient Lattices</div>
+          <div class="adv-body">Each helmet zone responds differently to its local impact profile. Graded prebuckling designs show 25% higher peak energy absorption efficiency.</div>
+        </div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="adv-title">OEM-Ready at Scale</div>
+          <div class="adv-body">Digitally designed and additively produced — no custom tooling. Available as a <strong>drop-in liner replacement</strong> for existing workflows, or as a <strong>full integrated helmet solution</strong> for new product development.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Partnership Model</div>
+    <p style="font-size:0.875em; color:var(--sub); line-height:1.5; margin-bottom:5px;">
+      We partner with OEMs and additive manufacturing producers to co-develop and validate custom protection inserts — bringing our computational design platform to your production workflow.
+    </p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:0.75em; color:var(--orange); letter-spacing:0.5px;">
+      → Design licensing · Co-development · OEM pilot programs
+    </p>
+  </div>
+
+  <div class="divider-v"></div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="col">
+    <div class="section-label">Lattice Architecture</div>
+    <div class="lattice-visual">
+      <div class="lattice-item">
+        <svg viewBox="0 0 70 60" width="70" height="60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="60" height="50" rx="3" fill="#ececec" stroke="#ccc" stroke-width="0.5"/>
+          <circle cx="20" cy="18" r="6" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="35" cy="28" r="9" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="52" cy="15" r="5" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="15" cy="38" r="7" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="50" cy="42" r="6" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="33" cy="47" r="4" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="27" cy="10" r="4" fill="none" stroke="#888" stroke-width="0.8"/>
+          <circle cx="58" cy="30" r="5" fill="none" stroke="#888" stroke-width="0.8"/>
+        </svg>
+        <div class="lattice-label">EPS Foam<br/>(Stochastic)</div>
+      </div>
+      <div class="lattice-vs">→</div>
+      <div class="lattice-item">
+        <svg viewBox="0 0 70 60" width="70" height="60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="60" height="50" rx="3" fill="#fff5f2" stroke="#E84C1E" stroke-width="0.5"/>
+          <g stroke="#E84C1E" stroke-width="0.8" opacity="0.9">
+            <line x1="8" y1="21" x2="62" y2="21"/><line x1="8" y1="37" x2="62" y2="37"/>
+            <line x1="24" y1="8" x2="24" y2="52"/><line x1="46" y1="8" x2="46" y2="52"/>
+            <line x1="8" y1="8" x2="24" y2="21"/><line x1="24" y1="21" x2="46" y2="8"/>
+            <line x1="46" y1="8" x2="62" y2="21"/><line x1="8" y1="21" x2="24" y2="37"/>
+            <line x1="24" y1="37" x2="46" y2="21"/><line x1="46" y1="21" x2="62" y2="37"/>
+            <line x1="8" y1="37" x2="24" y2="52"/><line x1="24" y1="52" x2="46" y2="37"/>
+            <line x1="46" y1="37" x2="62" y2="52"/>
+          </g>
+          <g fill="#ff6a3d">
+            <circle cx="24" cy="21" r="1.5"/><circle cx="46" cy="21" r="1.5"/>
+            <circle cx="24" cy="37" r="1.5"/><circle cx="46" cy="37" r="1.5"/>
+          </g>
+        </svg>
+        <div class="lattice-label" style="color:var(--orange)">Plate Lattice<br/>(Architected)</div>
+      </div>
+      <div class="lattice-vs">→</div>
+      <div class="lattice-item">
+        <svg viewBox="0 0 70 60" width="70" height="60" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="60" height="50" rx="3" fill="#fff5f2" stroke="#E84C1E" stroke-width="0.5"/>
+          <defs>
+            <linearGradient id="zoneGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E84C1E" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#E84C1E" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <g stroke="url(#zoneGrad)" stroke-width="0.8">
+            <line x1="8" y1="16" x2="62" y2="16"/><line x1="8" y1="26" x2="62" y2="26"/>
+            <line x1="8" y1="38" x2="62" y2="38"/><line x1="8" y1="50" x2="62" y2="50"/>
+            <line x1="20" y1="8" x2="20" y2="52"/><line x1="35" y1="8" x2="35" y2="52"/>
+            <line x1="50" y1="8" x2="50" y2="52"/>
+          </g>
+          <rect x="8" y="8"  width="54" height="7"  fill="#E84C1E" opacity="0.25" rx="1"/>
+          <text x="35" y="14" text-anchor="middle" font-size="5" fill="#E84C1E" font-family="'IBM Plex Mono',monospace">ZONE A</text>
+          <rect x="8" y="28" width="54" height="8"  fill="#E84C1E" opacity="0.12" rx="1"/>
+          <text x="35" y="34" text-anchor="middle" font-size="5" fill="#555" font-family="'IBM Plex Mono',monospace">ZONE B</text>
+          <rect x="8" y="40" width="54" height="10" fill="#E84C1E" opacity="0.05" rx="1"/>
+          <text x="35" y="47" text-anchor="middle" font-size="5" fill="#888" font-family="'IBM Plex Mono',monospace">ZONE C</text>
+        </svg>
+        <div class="lattice-label" style="color:#444">Gradient<br/>(Region-Tuned)</div>
+      </div>
+    </div>
+
+    <div class="section-label">Competitive Landscape</div>
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Solution</th>
+            <th>Multi-Impact</th>
+            <th>Tunable Geometry</th>
+            <th>Additive Mfg Ready</th>
+            <th>Region-Specific</th>
+            <th class="fortifyd-col">Fortifyd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EPS Foam</td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td class="fortifyd-col" rowspan="5" style="text-align:center; vertical-align:middle; line-height:1.6">✓<br/>✓<br/>✓<br/>✓</td>
+          </tr>
+          <tr>
+            <td>D3O</td>
+            <td><span class="prt">partial</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+          </tr>
+          <tr>
+            <td>MIPS</td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="xmk">✕</span></td>
+          </tr>
+          <tr>
+            <td>Strut Lattices</td>
+            <td><span class="prt">partial</span></td>
+            <td><span class="prt">partial</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="xmk">✕</span></td>
+          </tr>
+          <tr>
+            <td>Koroyd</td>
+            <td><span class="prt">partial</span></td>
+            <td><span class="xmk">✕</span></td>
+            <td><span class="prt">partial</span></td>
+            <td><span class="xmk">✕</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label">Applications</div>
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-name">Collision Sports</div>
+        <div class="app-detail">Football · Hockey · Rugby · Cycling · Snow Sports. Helmet liner inserts exceeding current safety standards without adding bulk.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-name">Military &amp; Defense</div>
+        <div class="app-detail">Blast mitigation · Shock body armor. Lightweight structural panels engineered to mission-critical specifications.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-name">Automotive</div>
+        <div class="app-detail">Crash structures · Cabin liners · EV battery housings. Crashworthy components outperforming foam composites at lower weight.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-name">Shipping &amp; Transportation</div>
+        <div class="app-detail">Packaging inserts · Cargo protection · Transit shock absorption. Tunable lattice structures protecting high-value goods across variable impact profiles.</div>
+      </div>
+    </div>
+
+    <div class="section-label">Beachhead Market</div>
+    <div class="chart-wrap" style="margin-bottom:10px;">
+      <div class="chart-title">Winter Sports Helmets — Market Entry Path</div>
+      <svg viewBox="0 0 300 72" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <text x="8" y="14" font-size="6.5" fill="#555" font-family="'IBM Plex Mono',monospace">TAM</text>
+        <rect x="38" y="4" width="220" height="14" rx="2" fill="#d8d8d8"/>
+        <text x="46" y="14.5" font-size="6.5" fill="#222" font-family="'Barlow',sans-serif">$30B+ Global Protective Equipment</text>
+        <line x1="44" y1="18" x2="44" y2="26" stroke="#bbb" stroke-width="0.8" stroke-dasharray="2,2"/>
+        <text x="8" y="37" font-size="6.5" fill="#444" font-family="'IBM Plex Mono',monospace">SAM</text>
+        <rect x="38" y="27" width="155" height="14" rx="2" fill="#c8c8c8"/>
+        <text x="46" y="37.5" font-size="6.5" fill="#111" font-family="'Barlow',sans-serif">$4B Sports Helmets (U.S.)</text>
+        <line x1="44" y1="41" x2="44" y2="49" stroke="#E84C1E" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+        <text x="8" y="61" font-size="6" fill="#E84C1E" font-family="'IBM Plex Mono',monospace">ENTRY</text>
+        <rect x="38" y="50" width="135" height="15" rx="2" fill="#E84C1E" opacity="0.9"/>
+        <text x="46" y="61" font-size="7" fill="#fff" font-weight="600" font-family="'Barlow',sans-serif">$50M Winter Sports Helmets</text>
+      </svg>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cta">
+    Seeking Additive Manufacturing Partners &amp; OEM Pilots
+    <span>Let's build the next standard in impact protection together</span>
+  </div>
+  <div class="footer-contact">
+    Prof. Robert MacCurdy · Principal Investigator<br>
+    MAC Lab, University of Colorado Boulder<br>
+    <a class="footer-email" href="mailto:robert.maccurdy@colorado.edu">robert.maccurdy@colorado.edu</a>
+  </div>
+  <div class="footer-web">
+    <span>Visit us</span>
+    <a class="footer-home-link" href="index.html" target="_blank">www.fortifyd.io</a>
+  </div>
+</footer>
+
+</body>
+</html>
