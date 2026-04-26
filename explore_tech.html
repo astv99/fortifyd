@@ -115,6 +115,103 @@
   .footer-web span { display: block; font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size:0.708em; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px; }
   .footer-email { color: rgba(255,255,255,1); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px; }
   .footer-home-link { color: rgba(255,255,255,1); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px; }
+
+  /* RESPONSIVE */
+  @media (min-width: 1400px) {
+    body { max-width: 1200px; }
+  }
+
+  @media (max-width: 1200px) {
+    body { font-size: 1em; }
+
+    .metrics { grid-template-columns: 1fr; }
+    .metric {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .metric:last-child { border-bottom: none; }
+    .body-grid { grid-template-columns: 1fr; }
+    .divider-v { display: none; }
+    footer {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 14px;
+      text-align: left;
+    }
+    .footer-cta,
+    .footer-contact { white-space: normal; }
+    .footer-contact {
+      text-align: left;
+      padding-left: 0;
+    }
+    .footer-web { text-align: left; }
+  }
+
+  @media (max-width: 768px) {
+    header { grid-template-columns: 1fr; }
+    .header-right {
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+    .header-left,
+    .header-right,
+    .col { padding: 14px; }
+    .logo { font-size: 2.1em; }
+    .headline { font-size: 1.75em; }
+    .tech-line { max-width: 100%; }
+    .body-grid { display: block; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .comp-wrap { overflow-x: auto; }
+    .comp-table { min-width: 640px; }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      font-size: 0.95em;
+      line-height: 1.35;
+    }
+    .header-left,
+    .header-right,
+    .col { padding: 12px; }
+    .badge-row { gap: 6px; }
+    .badge {
+      display: block;
+      font-size: 0.68em;
+    }
+    .section-label {
+      letter-spacing: 2px;
+      overflow-wrap: anywhere;
+    }
+    .lattice-visual {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .lattice-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lattice-vs {
+      transform: rotate(90deg);
+      line-height: 1;
+    }
+    .footer-web { font-size: 1.05em; }
+  }
+
+  @media (max-width: 360px) {
+    body { font-size: 0.9em; }
+    .logo { font-size: 1.85em; }
+    .headline { font-size: 1.42em; }
+    .conf-label {
+      letter-spacing: 1px;
+      font-size: 0.66em;
+    }
+    .metric-num { font-size: 2.1em; }
+    .chart-title { font-size: 0.65em; }
+    .footer-email,
+    .footer-home-link { overflow-wrap: anywhere; }
+  }
   </style>
 </head>
 <body>

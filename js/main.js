@@ -51,12 +51,10 @@
   function initHamburger() {
     const btn = document.getElementById('hamburger');
     const menu = document.getElementById('mobileMenu');
+    const nav = document.getElementById('navbar');
     if (!btn || !menu) return;
 
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-      // Animate spans
+    const setButtonVisualState = (open) => {
       const spans = btn.querySelectorAll('span');
       if (open) {
         spans[0].style.transform = 'translateY(6.5px) rotate(45deg)';
@@ -65,15 +63,50 @@
       } else {
         spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       }
+    };
+
+    const closeMenu = () => {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      setButtonVisualState(false);
+    };
+
+    const toggleMenu = () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setButtonVisualState(open);
+    };
+
+    btn.addEventListener('click', () => {
+      toggleMenu();
     });
 
     // Close on link click
     menu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', false);
-        btn.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        closeMenu();
       });
+    });
+
+    // Close when clicking outside the mobile nav region.
+    document.addEventListener('click', (e) => {
+      if (!menu.classList.contains('open')) return;
+      if (nav && nav.contains(e.target)) return;
+      closeMenu();
+    });
+
+    // Close on Escape for keyboard users.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+
+    // Ensure menu is closed when leaving mobile viewport.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && menu.classList.contains('open')) {
+        closeMenu();
+      }
     });
   }
 

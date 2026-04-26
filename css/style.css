@@ -93,6 +93,7 @@ input, textarea, button { font-family: inherit; }
 .nav-badge {
   font-family: var(--mono);
   font-size: 0.6rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -146,10 +147,8 @@ input, textarea, button { font-family: inherit; }
   flex-direction: column;
   background: var(--bg-2);
   border-top: 1px solid var(--border);
-  padding: 16px 32px 24px;
   gap: 4px;
 }
-.nav-mobile-menu.open { display: flex; }
 .nav-mobile-menu a {
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -523,7 +522,7 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-bottom:
+  margin-bottom: 40px;
 }
 .industry-card {
   background: var(--bg-card);
@@ -868,6 +867,21 @@ footer {
   :root { --section-pad: 72px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
+  .nav-mobile-menu {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0 16px;
+    transition: max-height 0.28s ease, opacity 0.2s ease, padding 0.28s ease;
+  }
+  .nav-mobile-menu.open {
+    max-height: 320px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 16px 16px 24px;
+  }
   .industry-grid { grid-template-columns: 1fr; }
   .feature-cards { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
@@ -878,7 +892,13 @@ footer {
   .stat-bar-inner { flex-direction: column; align-items: center; gap: 8px; }
 }
 @media (max-width: 480px) {
+  .logo-sub { font-size: 0.7rem; }
+  .nav-inner { gap: 16px; }
   .hero-actions { flex-direction: column; }
   .btn { width: 100%; }
   .contact-inner { gap: 32px; }
 }
+@media (max-width: 360px) {
+  .logo-sub { display: none; }
+}
+
