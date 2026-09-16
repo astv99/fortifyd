@@ -126,6 +126,25 @@ input, textarea, button { font-family: inherit; }
   background: var(--accent);
   color: #fff;
 }
+.nav-links li:last-child a {
+  color: #fff;
+  background: linear-gradient(135deg, #fbe7a1 0%, #ff9b4a 18%, #ff4d9d 42%, #b24cff 68%, #5f7cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 7px 10px;
+  border-radius: 999px;
+}
+.nav-links li:last-child a:hover {
+  filter: brightness(1.2);
+}
+.nav-links li:last-child a i {
+  background: linear-gradient(135deg, #fbe7a1 0%, #ff9b4a 18%, #ff4d9d 42%, #b24cff 68%, #5f7cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -160,6 +179,27 @@ input, textarea, button { font-family: inherit; }
   transition: color 0.2s;
 }
 .nav-mobile-menu a:hover { color: var(--accent); }
+.nav-mobile-menu .mobile-instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 18%, #d62976 42%, #962fbf 68%, #4f5bd5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-top: 6px;
+  width: fit-content;
+}
+.nav-mobile-menu .mobile-instagram-link i {
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 18%, #d62976 42%, #962fbf 68%, #4f5bd5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 /* =============================================
    HERO
@@ -760,6 +800,36 @@ section {
   color: var(--text-dim);
   font-size: 0.98rem;
   line-height: 1.7;
+}
+.team-contact {
+  margin: 0;
+}
+.team-contact + .team-contact {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.contact-link:hover {
+  color: var(--accent);
+}
+.contact-link i {
+  color: var(--accent);
+  font-size: 0.84rem;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.contact-link span {
+  white-space: nowrap;
 }
 .photo {
     width: 100%;
