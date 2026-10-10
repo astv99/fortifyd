@@ -236,12 +236,16 @@ input, textarea, button { font-family: inherit; }
 .hero-headline .line2 { display: block; color: var(--accent); opacity: 0; animation: fadeUp 0.8s 0.55s forwards; }
 .hero-headline .line3 { display: block; opacity: 0; animation: fadeUp 0.8s 0.7s forwards; font-size: clamp(2rem, 4.5vw, 4.2rem); }
 .hero-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
   gap: 16px;
   margin-top: 40px;
-  flex-wrap: wrap;
   opacity: 0;
   animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-actions > a:nth-child(3) {
+  grid-column: 1 / -1;
+  justify-self: start;
 }
 .hero-lattice-visual {
   position: absolute;
@@ -585,6 +589,16 @@ section {
 .industry-card-body p {
   color: var(--text-dim);
   line-height: 1.65;
+}
+.industry-tags a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.industry-tags a:hover,
+.industry-tags a:focus-visible {
+  color: var(--text);
+  text-decoration-color: var(--text);
 }
 .industry-card-accent {
   position: absolute;
@@ -932,6 +946,11 @@ footer {
 /* =============================================
    RESPONSIVE
 ============================================= */
+@media (max-width: 1200px) {
+  .nav-links li:has(> .nav-cta) {
+    display: none;
+  }
+}
 @media (max-width: 1024px) {
   .tech-grid { grid-template-columns: 1fr; gap: 48px; }
   .partners-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -940,7 +959,7 @@ footer {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-lattice-visual { display: none; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) { /* previously 768px*/
   :root { --section-pad: 72px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
@@ -969,10 +988,28 @@ footer {
   .footer-socials { margin-left: 0; }
   .stat-bar-inner { flex-direction: column; align-items: center; gap: 8px; }
 }
+@media (min-width: 640px) and (max-width: 1200px) {
+  .nav-mobile-menu a[href="https://fortifyd-helmet-poll.hamteri515866.chatgpt.site/"] {
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+  }
+  .nav-links > li:not(.nav-poll) {
+    display: none;
+  }
+  .nav-links .nav-poll {
+    display: list-item;
+    white-space: nowrap;
+  }
+  .nav-hamburger {
+    margin-left: 0;
+  }
+}
 @media (max-width: 480px) {
   .logo-sub { font-size: 0.7rem; }
   .nav-inner { gap: 16px; }
-  .hero-actions { flex-direction: column; }
+  .hero-actions { grid-template-columns: 1fr; }
   .btn { width: 100%; }
   .contact-inner { gap: 32px; }
 }
